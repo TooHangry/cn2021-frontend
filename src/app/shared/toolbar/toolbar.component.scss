@@ -1,0 +1,81 @@
+@import "../../../variables.scss";
+
+.app-toolbar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $text-color;
+
+  .logo {
+    width: 192px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+    svg {
+      font-weight: bolder;
+      fill: $text-color;
+    }
+  }
+
+  .profile-widget {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .toolbar-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: $border-radius;
+    background-color: $foreground-color;
+    margin-top: 16px;
+
+    .selected {
+      background-color: $accent-color;
+      color: $text-color;
+      svg {
+        stroke: $text-color;
+      }
+    }
+    .deselected {
+      background-color: none;
+      color: $accent-color;
+      svg {
+        stroke: $accent-color;
+      }
+    }
+
+    .toolbar-action {
+      width: 90%;
+      height: 48px;
+      // background-color: $interactive-element-color;
+      border: 1px solid $accent-color;
+      border-radius: $border-radius;
+      margin: 8px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      svg {
+        height: 32px;
+      }
+      &:hover {
+        transform: scale(1.025);
+      }
+    }
+  }
+}

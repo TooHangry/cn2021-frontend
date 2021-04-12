@@ -1,0 +1,21 @@
+<div class="app-chat">
+    <div class="messages">
+        <app-open-chat *ngIf="selectedChatName && !showCreation()" [title]="selectedChatName"></app-open-chat>
+        <app-message-list *ngIf="!selectedChatName && !showCreation()" [list]="groups | async" title="Groups">
+        </app-message-list>
+
+
+        <div class="creat-group" *ngIf="showCreation()">
+            <app-create-group [user]="user | async"></app-create-group>
+        </div>
+    </div>
+
+    <div class="messages-list">
+        <app-message-list *ngIf="selectedChatName" [list]="groups | async" title="Groups">
+        </app-message-list>
+
+        <div class="null-state" *ngIf="!selectedChatName">
+            Select a friend from the list to start chatting!
+        </div>
+    </div>
+</div>

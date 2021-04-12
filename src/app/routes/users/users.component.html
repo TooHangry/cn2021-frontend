@@ -1,0 +1,65 @@
+<div class="app-users">
+  <div class="friends" *ngIf="showFriends">
+    <div class="header">
+      My Friends
+      <div class="line"></div>
+    </div>
+    <div class="friend-list scroll">
+      <div
+        *ngFor="let friend of friends | async"
+        class="friend"
+        (click)="remove(friend)"
+      >
+        <div class="image">
+          {{ getImage(friend) }}
+        </div>
+        {{ friend.name }}
+
+        <div class="nickname">
+          {{getUsername(friend.username)}}
+        </div>
+
+        <div class="remove">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <line
+              x1="19"
+              y1="5"
+              x2="5"
+              y2="19"
+              fill="#fff"
+              stroke-miterlimit="10"
+            />
+            <line
+              x1="5"
+              y1="5"
+              x2="19"
+              y2="19"
+              fill="#fff"
+              stroke-miterlimit="10"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="users">
+    <div class="header">
+      Add Friends
+      <div class="line"></div>
+    </div>
+    <div class="user-list scroll">
+      <div *ngFor="let user of users | async" class="user">
+        <div class="image">
+          {{ getImage(user) }}
+        </div>
+        {{ user.name }}
+        <div class="nickname">
+          {{getUsername(user.username)}}
+        </div>
+
+        <div class="button" (click)="addFriend(user)">Add Friend</div>
+      </div>
+    </div>
+  </div>
+</div>

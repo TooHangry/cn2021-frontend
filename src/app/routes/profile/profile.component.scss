@@ -1,0 +1,143 @@
+@import "../../../variables.scss";
+
+.profile-container {
+  width: 100%;
+  height: 100%;
+  background-color: $foreground-color;
+  border-radius: $border-radius;
+
+  .header {
+    height: 64px;
+    font-size: 48px;
+    margin: 8px;
+    .line {
+      width: calc(100% + 16px);
+      height: 1px;
+      margin: 0px 0 8px -8px;
+      background: $text-color;
+    }
+  }
+
+  .user-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .photo {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      font-size: 64px;
+      background-color: $accent-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+
+      &:hover {
+        transform: scale(1.01);
+        .change-photo {
+          transform: scale(1);
+        }
+      }
+
+      .change-photo {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        transform: scale(0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          stroke: $text-color;
+          height: 64px;
+        }
+      }
+    }
+
+    .info {
+      margin-top: 8px;
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .input {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4px;
+        input {
+          width: 80%;
+          text-decoration: none;
+          height: 24px;
+          border-radius: 6px;
+          border: none;
+          box-shadow: none;
+          padding: 8px;
+          background-color: $text-color;
+          color: $text-color-light;
+        }
+        input:focus {
+          outline: none;
+        }
+        input:-webkit-autofill {
+          color: $text-color !important;
+        }
+
+        .error  {
+            margin: 4px;
+            width: 90%;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 12px;
+          }
+
+      }
+    }
+
+    .footer {
+      margin-top: 8px;
+      max-width: 350px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .button {
+        width: 50%;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $accent-color;
+        border-radius: $border-radius;
+        margin: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: scale(1.025);
+        }
+
+        svg {
+          stroke: $text-color;
+          height: 32px;
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<div class="app-chat">
+    <div class="messages">
+        <app-open-chat *ngIf="selectedFriend" [messages]="messages | async" [title]="selectedFriend.name" [selectedFriend]="selectedFriend" (sentMessage)="sendMessage($event)"></app-open-chat>
+        <app-message-list *ngIf="!selectedFriend" [list]="friends | async" title="Friends" [currentlyOnline]="friends | async" (chatSelected)="chatSelected($event)">
+        </app-message-list>
+    </div>
+
+    <div class="messages-list">
+        <app-message-list *ngIf="selectedFriend" [list]="friends | async" title="Friends" [currentlyOnline]="friends | async" (chatSelected)="chatSelected($event)">
+        </app-message-list>
+
+        <div class="null-state" *ngIf="!selectedFriend">
+            Select a friend from the list to start chatting!
+        </div>
+    </div>
+</div>

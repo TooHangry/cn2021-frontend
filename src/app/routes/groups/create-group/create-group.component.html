@@ -1,0 +1,85 @@
+<div class="create-group-container scroll" *ngIf="user">
+  <div class="header">
+    Create Group
+    <div class="line"></div>
+  </div>
+
+  <div class="creation">
+    Name your group:
+    <div class="input">
+      <input type="text" id="group-name" placeholder="Group Name" />
+    </div>
+  </div>
+
+  <div class="users-for-group" *ngIf="selectedUsers.length > 0">
+    Selected for group:
+
+  <div class="friend-list scroll" >
+    <div
+      *ngFor="let friend of selectedUsers"
+      class="friend"
+      (click)="remove(friend)"
+    >
+      <div class="image">
+        {{ getImage(friend) }}
+      </div>
+      {{ friend.name }}
+
+      <div class="nickname">
+        {{getUsername(friend.username)}}
+      </div>
+
+      <div class="remove">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <line
+            x1="19"
+            y1="5"
+            x2="5"
+            y2="19"
+            fill="#fff"
+            stroke-miterlimit="10"
+          />
+          <line
+            x1="5"
+            y1="5"
+            x2="19"
+            y2="19"
+            fill="#fff"
+            stroke-miterlimit="10"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="add-users scroll">
+    Add members:
+    <div class="can-add scroll">
+      <div *ngFor="let user of users" class="user">
+        <div class="image">
+          {{ getImage(user) }}
+        </div>
+        {{ user.name }}
+        <div class="nickname">
+          {{ getUsername(user.username) }}
+        </div>
+
+        <div class="button" (click)="add(user)">Add Friend</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="button" (click)="create()" *ngIf="canCreate()">
+      Create
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <polyline
+          points="4 11.5 10 17.5 21 6.5"
+          fill="none"
+          stroke-miterlimit="10"
+        />
+      </svg>
+    </div>
+  </div>
+</div>

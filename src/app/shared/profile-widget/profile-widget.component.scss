@@ -1,0 +1,82 @@
+@import "../../../variables.scss";
+
+.profile-widget-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: $border-radius;
+  background-color: $foreground-color;
+  .user-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .user-header {
+      width: 90%;
+      margin: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .user-image {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $accent-color;
+        margin-bottom: 8px;
+      }
+      .user-name {
+        width: 100%;
+        text-align: center;
+      }
+      .user-email {
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+      }
+    }
+  }
+  .user-action-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .user-actions {
+      width: 80%;
+      display: flex;
+      justify-content: space-evenly;
+      margin: 8px;
+
+      .button {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: auto;
+        // background-color: $interactive-element-color;
+        border: 1px solid $accent-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease;
+
+        svg {
+          height: 75%;
+          width: 75%;
+          stroke: $accent-color;
+          transition: all 0.1s ease;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

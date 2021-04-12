@@ -1,0 +1,82 @@
+<div class="profile-container">
+  <div class="header">
+    {{ getName() }}
+    <div class="line"></div>
+  </div>
+
+  <div class="user-info">
+    <div class="photo">
+      <div *ngIf="user && user.profilePicture === ''" class="photo">
+        {{ getInitials() }}
+        <div class="change-photo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <polygon
+              points="2 7 6.5 7 8 4 16 4 17.5 7 22 7 22 20 2 20 2 7"
+              fill="none"
+              stroke-miterlimit="10"
+            />
+            <circle cx="12" cy="13" r="4" fill="none" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="input">
+        <input
+          type="text"
+          id="email"
+          placeholder="Email"
+          [value]="getEmail()"
+          (keyup)="emailUp('email')"
+        />
+      </div>
+
+      <div class="input">
+        <input
+          type="text"
+          name="fname"
+          id="first"
+          placeholder="First Name"
+          [value]="getFirstName()"
+        />
+      </div>
+
+      <div class="input">
+        <input
+          type="text"
+          name="lname"
+          id="last"
+          placeholder="Last Name"
+          [value]="getLastName()"
+        />
+      </div>
+
+      <div class="input">
+        <input
+          type="text"
+          id="nickname"
+          placeholder="Nickname"
+          [value]="getNickname()"
+        />
+      </div>
+
+      <div class="error">
+        {{ message }}
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="button" (click)="save()">
+        Save
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <polyline
+            points="4 11.5 10 17.5 21 6.5"
+            fill="none"
+            stroke-miterlimit="10"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,139 @@
+@import "../../../variables.scss";
+
+.login-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .login-modal {
+    max-width: 512px;
+    min-width: 256px;
+    width: 50%;
+    max-height: 512px;
+    min-height: 256px;
+    height: 100%;
+    border-radius: $border-radius;
+    background-color: $interactive-element-color;
+    display: flex;
+    flex-direction: column;
+    .header {
+      height: 64px;
+      font-size: 64px;
+      margin: 8px;
+      .line {
+        width: calc(100% + 16px);
+        height: 1px;
+        margin: -8px;
+        background: $text-color;
+      }
+    }
+
+    .form, form {
+      height: calc(100% - 64px - 128px);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+
+      .input {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        input {
+          width: 80%;
+          text-decoration: none;
+          height: 24px;
+          border-radius: 6px;
+          border: none;
+          box-shadow: none;
+          padding: 8px;
+          background-color: $text-color;
+        }
+        input:focus {
+          outline: none;
+        }
+        input:-webkit-autofill {
+          color: $text-color !important;
+        }
+      }
+
+      .error  {
+        width: 90%;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 12px;
+      }
+    }
+
+    .button-large {
+      width: 50%;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $accent-color;
+      border-radius: $border-radius;
+      margin: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: scale(1.025);
+      }
+
+      svg {
+        stroke: $text-color;
+        height: 32px;
+        padding-left: 8px;
+      }
+    }
+
+    .footer-large {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .button-small {
+        width: 30%;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $accent-color;
+        border-radius: $border-radius;
+        margin: 4px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: scale(1.025);
+        }
+
+        svg {
+          stroke: $text-color;
+          height: 32px;
+          padding-left: 8px;
+        }
+      }
+    }
+  }
+}
