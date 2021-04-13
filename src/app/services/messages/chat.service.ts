@@ -31,13 +31,25 @@ export class ChatService {
   }
 
   addChat(message: Message): void {
-    const old = this.messages.value;
+    let old = this.messages.value;
+    let userFlag = false;
     old.forEach((group: MessageStructure) => {
       if(group.chatID === message.userID || group.chatID === message.receiverID) {
-        group.messages = [...group.messages, message]
+        group.messages = [...group.messages, message];
+        userFlag = true;
       }
     });
 
+    // Adds a struct for user if not already assigned
+    if(!userFlag) {
+      const userID = this.authService.getID();
+      const chatID = message.userID === userID ? message.receiverID : message.userID;
+      old = [...old, {chatID: chatID, messages: [message]}]
+    }
     this.messages.next(old);
+  }
+
+  setMessages(messages: MessageStructure[]): void {
+    this.messages.next(messages)
   }
 }

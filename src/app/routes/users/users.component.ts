@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Friend, FriendResponse } from 'src/app/interfaces';
 import { FriendService } from 'src/app/services/friends/friend.service';
+import { SocketService } from 'src/app/services/sockets/socket.service';
 import { getInitialsFromName } from 'src/app/utils/user.utils';
 
 @Component({
@@ -10,7 +11,7 @@ import { getInitialsFromName } from 'src/app/utils/user.utils';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-  constructor(private friendService: FriendService) {}
+  constructor(private friendService: FriendService, private socketService: SocketService) {}
   users: BehaviorSubject<Friend[]> = new BehaviorSubject<Friend[]>([]);
   friends: BehaviorSubject<Friend[]> = new BehaviorSubject<Friend[]>([]);
   showFriends = false;
@@ -31,13 +32,13 @@ export class UsersComponent implements OnInit {
     const oldUsers = this.users.value;
     const oldFriends = this.friends.value;
     this.showFriends = true;
-
-    const id = user.friendID ? user.friendID : user.id;
-
+    const id = user.id;
 
     this.friendService.addFriend(id).subscribe((res: any) => {
       this.friends.next([user, ...oldFriends]);
       this.users.next(oldUsers.filter((f) => f.id !== id));
+
+      this.socketService.addFriend(res.friendID)
     });
   }
 
@@ -51,7 +52,7 @@ export class UsersComponent implements OnInit {
   remove(user: Friend): void {
     const oldUsers = this.users.value;
     const oldFriends = this.friends.value;
-    const id = user.friendID ? user.friendID : user.id
+    const id = user.id
 
     if (id) {
       this.friendService.removeFriend(id).subscribe((res: any) => {

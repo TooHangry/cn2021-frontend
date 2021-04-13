@@ -1,10 +1,7 @@
 import { Message, MessageStructure } from '../interfaces/chat.interfaces';
 
 // Sorts messages by the receiver, returns a MessageStructure object
-export const sortMessagesByReceiver = (
-  messages: Message[],
-  currentUserID: number
-) => {
+export const sortMessagesByReceiver = (messages: Message[], currentUserID: number) => {
   // Gets unique freind IDs on the messages (Checks both sender and receiver, omits current user)
   if (messages) {
     const userIDs = [

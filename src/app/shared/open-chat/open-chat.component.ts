@@ -13,7 +13,7 @@ import { Message, MessageStructure } from 'src/app/interfaces/chat.interfaces';
 @Component({
   selector: 'app-open-chat',
   templateUrl: './open-chat.component.html',
-  styleUrls: ['./open-chat.component.scss']
+  styleUrls: ['./open-chat.component.scss'],
 })
 export class OpenChatComponent implements OnInit, OnChanges {
   @Input() title = '';
@@ -24,31 +24,30 @@ export class OpenChatComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngOnChanges(): void {
-    console.log(this.messages);
-  }
+  ngOnChanges(): void {}
 
   send(): void {
     const message = (document.getElementById('input') as HTMLInputElement)
       .value;
 
-
-    this.sentMessage.emit(message);
-    (document.getElementById('input') as HTMLInputElement).value = '';
+    if (message) {
+      this.sentMessage.emit(message);
+      (document.getElementById('input') as HTMLInputElement).value = '';
+    }
   }
 
   sentByUser(message: Message): boolean {
     if (this.selectedFriend) {
-      return this.selectedFriend.friendID === message.receiverID;
+      return this.selectedFriend.id === message.receiverID;
     }
     return false;
   }
 
   getMessages(): Message[] {
-    if (this.messages && this.selectedFriend && this.selectedFriend.friendID) {
+    if (this.messages && this.selectedFriend) {
       const indexedValue = this.messages.find(
         //@ts-ignore
-        (m) => m.chatID === this.selectedFriend.friendID
+        (m) => m.chatID === this.selectedFriend.id
       );
       return indexedValue ? indexedValue.messages : [];
     }

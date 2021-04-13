@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Friend } from 'src/app/interfaces';
+import { Friend, FriendList } from 'src/app/interfaces';
 import { getInitialsFromName } from 'src/app/utils/user.utils';
 
 @Component({
@@ -10,8 +10,7 @@ import { getInitialsFromName } from 'src/app/utils/user.utils';
 })
 export class MessageListComponent implements OnInit {
 
-  @Input() list: Friend[] | null = [];
-  @Input() currentlyOnline: Friend[] | null = [];
+  @Input() friends: FriendList[] | null = [];
   @Input() title = '';
   @Output() chatSelected: EventEmitter<Friend> = new EventEmitter();
   constructor(private router: Router) { }
