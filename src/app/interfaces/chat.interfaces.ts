@@ -11,6 +11,7 @@ export interface Message {
 
 export interface Room {
   id: number;
+  name: string;
   isGroup: boolean;
 }
 

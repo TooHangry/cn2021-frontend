@@ -51,6 +51,5 @@ export class CreateGroupComponent implements OnInit, OnChanges {
     const name = (document.getElementById(
       'group-name'
     ) as HTMLInputElement).value.trim();
-    console.log(name, this.selectedUsers);
   }
 }

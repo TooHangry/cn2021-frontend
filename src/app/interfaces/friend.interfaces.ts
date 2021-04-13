@@ -1,9 +1,17 @@
+import { Message, Room } from "./chat.interfaces";
+
 export interface Friend {
     id: number;
-    friendID?: number;
     username: string;
     name: string;
     profilePicture: string;
+    room: Room
+}
+
+
+export interface FriendList {
+    friend: Friend;
+    lastMessage: string;
 }
 
 export interface FriendResponse {
