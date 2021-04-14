@@ -1,6 +1,9 @@
+import { User } from "./user.interfaces";
+
 export interface Message {
   id: number;
   isGroup: boolean;
+  roomID: number;
   isImage: boolean;
   imageLocation: string;
   userID: number;
@@ -13,6 +16,8 @@ export interface Room {
   id: number;
   name: string;
   isGroup: boolean;
+  users?: User[];
+  lastMessage?: string;
 }
 
 

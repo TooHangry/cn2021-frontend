@@ -1,0 +1,52 @@
+<div class="message-list">
+  <div class="header">
+    <div class="title">
+      {{ title }}
+      <div class="create" *ngIf="showCreate" (click)="create.emit()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <polygon
+            points="3 19 3 5 5 3 19 3 21 5 21 19 19 21 5 21 3 19"
+            fill="none"
+            stroke-miterlimit="10"
+          />
+          <line
+            x1="12"
+            y1="8"
+            x2="12"
+            y2="16"
+            stroke-miterlimit="10"
+          />
+          <line
+            x1="16"
+            y1="12"
+            x2="8"
+            y2="12"
+            stroke-miterlimit="10"
+          />
+        </svg>
+      </div>
+    </div>
+    <div class="line"></div>
+  </div>
+  <div *ngIf="groups && groups.length > 0" class="chats scroll">
+    <div *ngFor="let chat of groups" class="chat" (click)="selectChat(chat)">
+      <div class="image">{{ getInitials(chat) }}</div>
+      <div class="chat-info">
+        <div class="info-header">
+          {{ chat.name }}
+        </div>
+        <div class="sub-header">
+          {{ getUsers(chat) }}
+        </div>
+        <div class="info-last-message">
+          {{ chat.lastMessage }}
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!groups || groups.length === 0" class="null-state">
+      Add friends to start chatting!
+      <div class="button" (click)="goToAdd()">Add Friends</div>
+    </div>
+  </div>
+</div>

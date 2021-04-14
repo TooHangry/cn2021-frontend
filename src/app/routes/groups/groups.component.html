@@ -1,21 +1,30 @@
 <div class="app-chat">
     <div class="messages">
-        <app-open-chat *ngIf="selectedChatName && !showCreation()" [title]="selectedChatName"></app-open-chat>
-        <app-message-list *ngIf="!selectedChatName && !showCreation()" [friends]="groups | async" title="Groups">
-        </app-message-list>
+        <app-open-chat *ngIf="selectedChatName && !showCreation()" [title]="selectedChatName" [messages]="messages | async" (sentMessage)="sendMessage($event)" [group]="true" [selectedRoom]="selectedGroup" [user]="user | async"></app-open-chat>
+        <app-group-list *ngIf="!selectedChatName && !showCreation()" [groups]="groups | async" title="Groups" (chatSelected)="chatSelected($event)" [showCreate]="true" (create)="openCreateModal()">
+        </app-group-list>
 
 
         <div class="creat-group" *ngIf="showCreation()">
-            <app-create-group [user]="user | async"></app-create-group>
+            <app-create-group [user]="user | async" (createGroup)="createGroup($event)"></app-create-group>
         </div>
     </div>
 
     <div class="messages-list">
-        <app-message-list *ngIf="selectedChatName" [friends]="groups | async" title="Groups">
-        </app-message-list>
+        <app-group-list *ngIf="selectedChatName" [groups]="groups | async" title="Groups" [showCreate]="true" (create)="openCreateModal()" (chatSelected)="chatSelected($event)">
+        </app-group-list>
+        
 
         <div class="null-state" *ngIf="!selectedChatName">
-            Select a friend from the list to start chatting!
+            Select a group from the list to start chatting!
+        </div>
+    </div>
+</div>
+
+<div class="create-modal" id="create">
+    <div class="modal">
+        <div class="create-group">
+            <app-create-group [user]="user | async" [showExit]="true" (exit)="closeCreateModal()" (createGroup)="createGroup($event)"></app-create-group>
         </div>
     </div>
 </div>

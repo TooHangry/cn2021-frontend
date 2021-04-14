@@ -1,33 +1,62 @@
 @import "../../../variables.scss";
 
 .app-chat {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  .messages {
+    height: 100%;
+    width: calc(100% - 16px - 35%);
+    margin: 8px;
+    background-color: $foreground-color;
+    border-radius: $border-radius;
+  }
+
+  .messages-list {
+    height: 100%;
+    width: 35%;
+    margin: 8px;
+    background-color: $foreground-color;
+    border-radius: $border-radius;
+  }
+
+  .null-state {
     width: 100%;
     height: 100%;
+    margin: 8px;
     display: flex;
+    justify-content: center;
     align-items: center;
+  }
+}
 
-    .messages {
-        height: 100%;
-        width: calc(100% - 16px - 35%);
-        margin: 8px;
-        background-color: $foreground-color;
-        border-radius: $border-radius;
-    }
+.create-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  transform: scale(0);
 
-    .messages-list {
-        height: 100%;
-        width: 35%;
-        margin: 8px;
-        background-color: $foreground-color;
-        border-radius: $border-radius;
-    }
+  .modal {
+    z-index: 100;
+    max-width: 600px;
+    min-width: 300px;
+    max-height: 90%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 
-    .null-state {
-        width: 100%;
-        height: 100%;
-        margin: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .create-group {
+      width: 100%;
+      height: 100%;
     }
+  }
 }

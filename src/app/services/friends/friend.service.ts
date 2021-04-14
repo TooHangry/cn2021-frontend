@@ -26,4 +26,13 @@ export class FriendService {
   removeFriend(id: number): Observable<Friend> {
     return this.client.delete(`${this.apiBase}/friends/remove/${id}`).pipe(map((res: any) => res.friend));
   }
+
+  addGroup(name: string, members: number[]): Observable<any> {
+    const data = new FormData();
+    data.append('name', name);
+    for(let i = 0; i < members.length; ++i) {
+      data.append('ids[]', members[i].toString())
+    }
+    return this.client.post(`${this.apiBase}/friends/add/group`, data)
+  }
 }
