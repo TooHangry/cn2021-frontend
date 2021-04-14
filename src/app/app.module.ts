@@ -16,9 +16,9 @@ import { AuthInterceptor } from './auth/interceptors/auth';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { ProfileWidgetComponent } from './shared/profile-widget/profile-widget.component';
-import { FriendListComponent } from './shared/friend-list/friend-list.component';
 import { OpenChatComponent } from './shared/open-chat/open-chat.component';
 import { CreateGroupComponent } from './routes/groups/create-group/create-group.component';
+import { GroupListComponent } from './shared/group-list/group-list.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
@@ -35,9 +35,9 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
     MessageComponent,
     ToolbarComponent,
     ProfileWidgetComponent,
-    FriendListComponent,
     OpenChatComponent,
-    CreateGroupComponent
+    CreateGroupComponent,
+    GroupListComponent,
   ],
   imports: [
     BrowserModule,

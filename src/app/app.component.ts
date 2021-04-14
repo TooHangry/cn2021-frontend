@@ -44,6 +44,10 @@ export class AppComponent implements OnInit {
       this.chatService.addChat(data.message);
     });
 
+    this.socketService.socket.on('groupmessage', (data: any) => {
+        this.chatService.addGroupChat(data.message);
+    });
+
     this.socketService.socket.on('friend', (data: any) => {
       this.socketService.join_room(data.friend.id);
     });

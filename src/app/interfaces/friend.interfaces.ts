@@ -23,3 +23,8 @@ export interface Group {
     id: number;
     chatName: string;
 }
+
+export interface CreateGroupEvent {
+    userIDs: number[];
+    name: string;
+}

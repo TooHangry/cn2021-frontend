@@ -34,32 +34,6 @@
   </div>
 
   <div class="toolbar-actions">
-    <div class="toolbar-action" [ngClass]="{'selected': isSelected('/users'), 'deselected': !isSelected('/users')}" (click)="routeTo('users')">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <circle cx="8.5" cy="7" r="4" fill="none" />
-        <polyline
-          points="1 20.5 1 16.5 4 13.5 8.5 15 13 13.5 16 16.5 16 20.5"
-          fill="none"
-        />
-        <line
-          x1="19.5"
-          y1="6.5"
-          x2="19.5"
-          y2="13.5"
-          fill="none"
-          stroke-miterlimit="10"
-        />
-        <line
-          x1="23"
-          y1="10"
-          x2="16"
-          y2="10"
-          fill="none"
-          stroke-miterlimit="10"
-        />
-      </svg>
-      Add
-    </div>
 
     <div class="toolbar-action" [ngClass]="{'selected': isSelected('/chats'), 'deselected': !isSelected('/chats')}" (click)="routeTo('chats')">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -87,5 +61,33 @@
         /></svg
       >Groups
     </div>
+
+    <div class="toolbar-action" [ngClass]="{'selected': isSelected('/users'), 'deselected': !isSelected('/users')}" (click)="routeTo('users')">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <circle cx="8.5" cy="7" r="4" fill="none" />
+        <polyline
+          points="1 20.5 1 16.5 4 13.5 8.5 15 13 13.5 16 16.5 16 20.5"
+          fill="none"
+        />
+        <line
+          x1="19.5"
+          y1="6.5"
+          x2="19.5"
+          y2="13.5"
+          fill="none"
+          stroke-miterlimit="10"
+        />
+        <line
+          x1="23"
+          y1="10"
+          x2="16"
+          y2="10"
+          fill="none"
+          stroke-miterlimit="10"
+        />
+      </svg>
+      Add
+    </div>
+
   </div>
 </div>

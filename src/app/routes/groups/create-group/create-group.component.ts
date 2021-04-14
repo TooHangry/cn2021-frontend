@@ -1,5 +1,13 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { Friend, User } from 'src/app/interfaces';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { CreateGroupEvent, Friend, User } from 'src/app/interfaces';
+import { FriendService } from 'src/app/services/friends/friend.service';
 import { getInitialsFromName } from 'src/app/utils/user.utils';
 
 @Component({
@@ -9,16 +17,18 @@ import { getInitialsFromName } from 'src/app/utils/user.utils';
 })
 export class CreateGroupComponent implements OnInit, OnChanges {
   @Input() user: User | null = null;
-  constructor() {}
+  @Input() showExit = false;
+  @Output() exit: EventEmitter<null> = new EventEmitter();
+  @Output() createGroup: EventEmitter<CreateGroupEvent> = new EventEmitter();
+  constructor(private friendService: FriendService) {}
   selectedUsers: Friend[] = [];
   users: Friend[] = [];
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(): void {
-    if(this.user) {
-      this.users = this.user.friends
+    if (this.user) {
+      this.users = this.user.friends;
     }
   }
 
@@ -34,7 +44,11 @@ export class CreateGroupComponent implements OnInit, OnChanges {
   }
 
   canCreate(): boolean {
-    return this.selectedUsers.length > 0 && (document.getElementById('group-name') as HTMLInputElement).value.length > 0;
+    return (
+      this.selectedUsers.length > 0 &&
+      (document.getElementById('group-name') as HTMLInputElement).value.length >
+        0
+    );
   }
 
   remove(friend: Friend): void {
@@ -51,5 +65,10 @@ export class CreateGroupComponent implements OnInit, OnChanges {
     const name = (document.getElementById(
       'group-name'
     ) as HTMLInputElement).value.trim();
+    const userIDs = [
+      ...this.selectedUsers.map((user) => user.id),
+      this.user ? this.user.id : 0,
+    ];
+    this.createGroup.emit({ userIDs, name });
   }
 }

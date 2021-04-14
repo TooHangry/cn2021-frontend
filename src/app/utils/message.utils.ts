@@ -39,3 +39,40 @@ export const sortMessagesByReceiver = (messages: Message[], currentUserID: numbe
   }
   return [];
 };
+
+
+// Sorts messages by the rooomID, returns a MessageStructure object
+export const sortMessagesByRoom = (messages: Message[], currentUserID: number) => {
+  if (messages) {
+    const roomIDs = [
+      ...new Set(
+        messages.map((message) =>message.roomID)
+      ),
+    ];
+    let struct: MessageStructure[] = [];
+
+    // Initialize the chat structure
+    roomIDs.forEach((id: number) => {
+      struct = [
+        ...struct,
+        {
+          chatID: id,
+          messages: [],
+        },
+      ];
+    });
+
+    messages.forEach((message: Message) => {
+      struct.forEach((group: MessageStructure) => {
+        if (
+          group.chatID === message.roomID
+        ) {
+          group.messages = [...group.messages, message];
+        }
+      });
+    });
+
+    return struct;
+  }
+  return [];
+};

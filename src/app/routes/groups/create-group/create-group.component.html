@@ -1,6 +1,26 @@
 <div class="create-group-container scroll" *ngIf="user">
   <div class="header">
-    Create Group
+    <div class="title">
+      Create Group
+      <div class="exit" *ngIf="showExit" (click)="exit.emit()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <line
+            x1="19"
+            y1="5"
+            x2="5"
+            y2="19"
+            stroke-miterlimit="10"
+          />
+          <line
+            x1="5"
+            y1="5"
+            x2="19"
+            y2="19"
+            stroke-miterlimit="10"
+          />
+        </svg>
+      </div>
+    </div>
     <div class="line"></div>
   </div>
 
@@ -14,43 +34,43 @@
   <div class="users-for-group" *ngIf="selectedUsers.length > 0">
     Selected for group:
 
-  <div class="friend-list scroll" >
-    <div
-      *ngFor="let friend of selectedUsers"
-      class="friend"
-      (click)="remove(friend)"
-    >
-      <div class="image">
-        {{ getImage(friend) }}
-      </div>
-      {{ friend.name }}
+    <div class="friend-list scroll">
+      <div
+        *ngFor="let friend of selectedUsers"
+        class="friend"
+        (click)="remove(friend)"
+      >
+        <div class="image">
+          {{ getImage(friend) }}
+        </div>
+        {{ friend.name }}
 
-      <div class="nickname">
-        {{getUsername(friend.username)}}
-      </div>
+        <div class="nickname">
+          {{ getUsername(friend.username) }}
+        </div>
 
-      <div class="remove">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <line
-            x1="19"
-            y1="5"
-            x2="5"
-            y2="19"
-            fill="#fff"
-            stroke-miterlimit="10"
-          />
-          <line
-            x1="5"
-            y1="5"
-            x2="19"
-            y2="19"
-            fill="#fff"
-            stroke-miterlimit="10"
-          />
-        </svg>
+        <div class="remove">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <line
+              x1="19"
+              y1="5"
+              x2="5"
+              y2="19"
+              fill="#fff"
+              stroke-miterlimit="10"
+            />
+            <line
+              x1="5"
+              y1="5"
+              x2="19"
+              y2="19"
+              fill="#fff"
+              stroke-miterlimit="10"
+            />
+          </svg>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 
   <div class="add-users scroll">

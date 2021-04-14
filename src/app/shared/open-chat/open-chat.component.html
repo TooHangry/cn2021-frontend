@@ -3,11 +3,23 @@
     {{ title }}
     <div class="line"></div>
   </div>
-  <div class="messages scroll">
+  <div class="messages scroll" *ngIf="!group">
     <div
       class="message"
       *ngFor="let message of getMessages()"
       [ngClass]="{ right: sentByUser(message), left: !sentByUser(message) }"
+    >
+      <div class="content">
+        {{ message.message }}
+      </div>
+    </div>
+  </div>
+
+  <div class="messages scroll" *ngIf="group">
+    <div
+      class="message"
+      *ngFor="let message of getGroupMessages()"
+      [ngClass]="{ right: sentFromUser(message), left: !sentFromUser(message) }"
     >
       <div class="content">
         {{ message.message }}

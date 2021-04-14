@@ -11,11 +11,34 @@
   overflow: hidden;
 
   .header {
-    width: calc(100% - 16px);
     height: 64px;
     font-size: 48px;
     margin: 8px;
-    user-select: none;
+    width: 100%;
+    .title {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      .exit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        svg {
+          stroke: $text-color;
+          fill: $text-color;
+          height: 36px;
+          width: 36px;
+        }
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
     .line {
       width: calc(100% + 16px);
       height: 1px;
