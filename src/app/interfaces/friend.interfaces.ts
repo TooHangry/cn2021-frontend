@@ -12,6 +12,7 @@ export interface Friend {
 export interface FriendList {
     friend: Friend;
     lastMessage: string;
+    hasNotification: boolean;
 }
 
 export interface FriendResponse {

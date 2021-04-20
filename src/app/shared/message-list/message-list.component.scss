@@ -86,12 +86,58 @@
         }
       }
     }
+
+    .notify {
+      width: calc(100% - 16px);
+      min-height: 96px;
+      max-height: 96px;
+      margin-bottom: 8px;
+      background-color: $notification-color;
+      border-radius: $border-radius;
+      display: flex;
+      align-items: center;
+      user-select: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: scale(1.01);
+      }
+      .image {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $accent-color;
+        margin: 8px;
+        margin-right: 16px;
+      }
+      .chat-info {
+        display: flex;
+        flex-direction: column;
+        height: 64px;
+
+        .info-header {
+          font-weight: bold;
+          justify-self: flex-start;
+          margin-bottom: 8px;
+          font-size: 16px;
+        }
+        .info-last-message {
+          justify-self: center;
+          font-size: 12px;
+        }
+      }
+    }
+    
     .chat {
       width: calc(100% - 16px);
       min-height: 96px;
       max-height: 96px;
       margin-bottom: 8px;
-      background-color: $interactive-element-color;
+      background-color: $background-color;
       border-radius: $border-radius;
       display: flex;
       align-items: center;

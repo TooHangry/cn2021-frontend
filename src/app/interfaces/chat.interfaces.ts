@@ -23,4 +23,5 @@ export interface MessageResponse {
 export interface MessageStructure {
     chatID: number;
     messages: Message[]
-}
+    hasNotification: boolean;
+  }

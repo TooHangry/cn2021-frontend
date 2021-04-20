@@ -1,3 +1,4 @@
+import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Friend, FriendList, User, UserResponse } from 'src/app/interfaces';
@@ -35,9 +36,10 @@ export class ChatsComponent implements OnInit {
           let friends: FriendList[] = [];
           user.user.friends.forEach((friend: Friend) => {
             const chatMessages = messages.find((group: MessageStructure) => group.chatID === friend.id)?.messages;
+            const notify = messages.find((group: MessageStructure) => group.chatID === friend.id)?.hasNotification;
             friends = [...friends, {
               friend,
-              lastMessage: chatMessages ? chatMessages[chatMessages.length - 1].message : 'Select to start chatting!'
+              lastMessage: chatMessages ? chatMessages[chatMessages.length - 1].message : 'Select to start chatting!', hasNotification: notify?notify:false
             }]
           })
           this.friends.next(friends);
@@ -49,6 +51,14 @@ export class ChatsComponent implements OnInit {
 
   chatSelected(event: Friend): void {
     this.selectedFriend = event;
+    const currentFriends = this.friends.value; 
+    // clear notification on select.
+    currentFriends.forEach((friend:FriendList)=>{
+      if(friend.friend.id === event.id){
+        friend.hasNotification = false;
+      }
+    })
+    this.friends.next(currentFriends);
     // Need to query messages here, scroll to bottom
     console.log(event);
   }

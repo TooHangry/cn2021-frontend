@@ -20,6 +20,7 @@ export const sortMessagesByReceiver = (messages: Message[], currentUserID: numbe
         {
           chatID: id,
           messages: [],
+          hasNotification: false,
         },
       ];
     });

@@ -36,6 +36,7 @@ export class ChatService {
     old.forEach((group: MessageStructure) => {
       if(group.chatID === message.userID || group.chatID === message.receiverID) {
         group.messages = [...group.messages, message];
+        group.hasNotification = true;
         userFlag = true;
       }
     });
@@ -44,7 +45,7 @@ export class ChatService {
     if(!userFlag) {
       const userID = this.authService.getID();
       const chatID = message.userID === userID ? message.receiverID : message.userID;
-      old = [...old, {chatID: chatID, messages: [message]}]
+      old = [...old, {chatID: chatID, messages: [message], hasNotification: false}]
     }
     this.messages.next(old);
   }

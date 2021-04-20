@@ -3,15 +3,29 @@
     {{ title }}
     <div class="line"></div>
   </div>
+  
   <div *ngIf="friends && friends.length > 0" class="chats scroll">
     <div *ngFor="let chat of friends" class="chat" (click)="selectChat(chat.friend)">
-      <div class="image">{{getInitials(chat.friend)}}</div>
-      <div class="chat-info">
-        <div class="info-header">
-          {{ chat.friend.name }}
+      <div *ngIf="chat.hasNotification" class="notify">
+        <div class="image">{{getInitials(chat.friend)}}</div>
+        <div class="chat-info">
+          <div class="info-header">
+            {{ chat.friend.name }}
+          </div>
+          <div class="info-last-message">
+            {{ chat.lastMessage }}
+          </div>
         </div>
-        <div class="info-last-message">
-          {{ chat.lastMessage }}
+      </div>
+      <div *ngIf="!chat.hasNotification" class="chat">
+        <div class="image">{{getInitials(chat.friend)}}</div>
+        <div class="chat-info">
+          <div class="info-header">
+            {{ chat.friend.name }}
+          </div>
+          <div class="info-last-message">
+            {{ chat.lastMessage }}
+          </div>
         </div>
       </div>
     </div>
@@ -20,5 +34,6 @@
       Add friends to start chatting!
       <div class="button" (click)="goToAdd()">Add Friends</div>
     </div>
+    
   </div>
-</div>
+

@@ -1,3 +1,4 @@
+import { group } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Friend, FriendList } from 'src/app/interfaces';
@@ -12,6 +13,7 @@ export class MessageListComponent implements OnInit {
 
   @Input() friends: FriendList[] | null = [];
   @Input() title = '';
+  @Input() hasNotification: boolean = true;
   @Output() chatSelected: EventEmitter<Friend> = new EventEmitter();
   constructor(private router: Router) { }
 
@@ -24,6 +26,7 @@ export class MessageListComponent implements OnInit {
 
   selectChat(chat: Friend): void {
     this.chatSelected.emit(chat);
+    this.hasNotification = false;
   }
 
   getInitials(user: Friend) {
