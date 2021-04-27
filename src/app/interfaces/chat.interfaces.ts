@@ -10,6 +10,7 @@ export interface Message {
   receiverID: number;
   dateCreated: Date;
   message: string;
+  username: string;
 }
 
 export interface Room {

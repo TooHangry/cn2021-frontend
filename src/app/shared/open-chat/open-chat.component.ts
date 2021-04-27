@@ -23,15 +23,19 @@ export class OpenChatComponent implements OnInit, OnChanges {
   @Input() selectedRoom: Room | null = null;
   @Input() user: User | null = null;
   @Output() sentMessage: EventEmitter<string> = new EventEmitter();
+  @Output() exit: EventEmitter<null> = new EventEmitter();
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.messages)
+  }
 
   ngOnChanges(): void {}
 
   send(): void {
     const message = (document.getElementById('input') as HTMLInputElement)
       .value;
+      
 
     if (message) {
       this.sentMessage.emit(message);

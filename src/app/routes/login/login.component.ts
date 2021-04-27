@@ -101,6 +101,7 @@ export class LoginComponent implements OnInit {
         (res: any) => { 
           this.userService.setUser(res);
           this.router.navigate(['/chats']);
+          // window.location.reload();
         },
         (err: any) => { this.message = "That user doesn't exist!" })
     } else {
@@ -111,5 +112,9 @@ export class LoginComponent implements OnInit {
   logout(): void {
     this.userService.logout();
     window.location.reload();
+  }
+
+  home(): void {
+    this.router.navigate(['/chat'])
   }
 }

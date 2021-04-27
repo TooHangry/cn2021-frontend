@@ -35,7 +35,7 @@ export class SocketService {
     this.socket.emit('friend', {friendID: id})
   }
 
-  join_room(id: number): void {
+  joinRoom(id: number): void {
     this.socket.emit('joinroom', {friendID: id})
   }
 }

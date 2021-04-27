@@ -5,6 +5,7 @@ import { ChatService } from './services/messages/chat.service';
 import { SocketService } from './services/sockets/socket.service';
 import { UserService } from './services/user/user.service';
 import { sortMessagesByReceiver } from './utils/message.utils';
+import { showMainContentMobile, showMainMenuMobile } from './utils/mobile.utils';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
     });
 
     // This is where we will listen to all of the socket events
-    //  When we receieve an event, we will call through to a state service that will manage our data
+    //  When we receive an event, we will call through to a state service that will manage our data
 
     this.socketService.socket.on('connect', (data: any) => {
       if(data) {
@@ -49,7 +50,11 @@ export class AppComponent implements OnInit {
     });
 
     this.socketService.socket.on('friend', (data: any) => {
-      this.socketService.join_room(data.friend.id);
+      this.socketService.joinRoom(data.friend.id);
     });
+  }
+
+  closeMenu(): void {
+    showMainContentMobile();
   }
 }

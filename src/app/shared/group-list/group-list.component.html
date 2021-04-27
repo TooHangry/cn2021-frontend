@@ -1,7 +1,24 @@
 <div class="message-list">
   <div class="header">
     <div class="title">
+      <div class="back" (click)="exit.emit()">
+        <svg
+          _ngcontent-hqp-c11=""
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 0 24 24"
+          width="24px"
+          fill="#000000"
+        >
+          <path _ngcontent-hqp-c11="" d="M0 0h24v24H0V0z" fill="none"></path>
+          <path
+            _ngcontent-hqp-c11=""
+            d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"
+          ></path>
+        </svg>
+      </div>
       {{ title }}
+
       <div class="create" *ngIf="showCreate" (click)="create.emit()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <polygon
@@ -9,25 +26,14 @@
             fill="none"
             stroke-miterlimit="10"
           />
-          <line
-            x1="12"
-            y1="8"
-            x2="12"
-            y2="16"
-            stroke-miterlimit="10"
-          />
-          <line
-            x1="16"
-            y1="12"
-            x2="8"
-            y2="12"
-            stroke-miterlimit="10"
-          />
+          <line x1="12" y1="8" x2="12" y2="16" stroke-miterlimit="10" />
+          <line x1="16" y1="12" x2="8" y2="12" stroke-miterlimit="10" />
         </svg>
       </div>
     </div>
     <div class="line"></div>
   </div>
+
   <div *ngIf="groups && groups.length > 0" class="chats scroll">
     <div *ngFor="let chat of groups" class="chat" (click)="selectChat(chat)">
       <div class="image">{{ getInitials(chat) }}</div>
