@@ -6,6 +6,7 @@ import { FriendService } from 'src/app/services/friends/friend.service';
 import { ChatService } from 'src/app/services/messages/chat.service';
 import { SocketService } from 'src/app/services/sockets/socket.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { showMainMenuMobile } from 'src/app/utils/mobile.utils';
 
 @Component({
   selector: 'app-groups',
@@ -59,6 +60,8 @@ export class GroupsComponent implements OnInit {
   chatSelected(event: Room): void {
     this.selectedGroup = event;
     this.selectedChatName = event.name;
+    (document.getElementById('group-list') as HTMLDivElement).style.transform = 'scale(1)'
+
   }
 
   sendMessage(event: any): void {
@@ -87,5 +90,13 @@ export class GroupsComponent implements OnInit {
       this.groups.next([data.room, ...this.groups.value])
     });
     this.closeCreateModal();
+  }
+
+  exit(): void {
+    (document.getElementById('group-list') as HTMLDivElement).style.transform = 'translateX(100%)'
+  }
+
+  showMobileMenu(): void {
+    showMainMenuMobile();
   }
 }

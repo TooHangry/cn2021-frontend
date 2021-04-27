@@ -5,6 +5,7 @@ import { Message, MessageStructure } from 'src/app/interfaces/chat.interfaces';
 import { ChatService } from 'src/app/services/messages/chat.service';
 import { SocketService } from 'src/app/services/sockets/socket.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { showMainMenuMobile } from 'src/app/utils/mobile.utils';
 
 @Component({
   selector: 'app-chats',
@@ -27,7 +28,7 @@ export class ChatsComponent implements OnInit {
   ngOnInit(): void {
     this.userService.forceGetUser().subscribe((user: UserResponse) => {
       if (user) {
-        this.userService.currntUser.next(user.user);
+        this.userService.setUser(user);
         this.currentUser = user.user;
 
         this.chatService.messages.subscribe((messages: MessageStructure[]) => {
@@ -51,26 +52,25 @@ export class ChatsComponent implements OnInit {
     this.selectedFriend = event;
     // Need to query messages here, scroll to bottom
     console.log(event);
+
+    const list = (document.getElementById('list') as HTMLDivElement);
+    if (list.offsetWidth < 601) {
+      list.style.transform = 'scale(1)';
+    }
   }
 
   sendMessage(message: string): void {
     const senderID = this.currentUser ? this.currentUser.id : 0;
     const receiverID = this.selectedFriend ? this.selectedFriend.id : 0;
     this.socketService.sendMessage(message, senderID, receiverID);
-      // this.messages.value.forEach((msg) => {
-      //   if(this.selectedFriend && this.currentUser && msg.chatID === this.selectedFriend.id) {
-      //     const mess: Message = {
-      //       id: 0,
-      //       isGroup: false,
-      //       isImage: false,
-      //       imageLocation: '',
-      //       userID: this.currentUser.id,
-      //       receiverID: this.selectedFriend.id,
-      //       dateCreated: new Date(),
-      //       message: message
-      //     }
-      //     msg.messages = [...msg.messages, mess ]
-      //   }
-      // });
+  }
+
+  close(): void {
+    const list = (document.getElementById('list') as HTMLDivElement);
+    list.style.transform = 'scale(0)';
+  }
+
+  showMainMenu(): void {
+    showMainMenuMobile();
   }
 }

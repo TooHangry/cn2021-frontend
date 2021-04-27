@@ -13,6 +13,7 @@ export class MessageListComponent implements OnInit {
   @Input() friends: FriendList[] | null = [];
   @Input() title = '';
   @Output() chatSelected: EventEmitter<Friend> = new EventEmitter();
+  @Output() exit: EventEmitter<null> = new EventEmitter();
   constructor(private router: Router) { }
 
   ngOnInit(): void {

@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: space-evenly;
     overflow: hidden;
+    overflow-x: hidden;
 
     .root-toolbar {
         max-width: 256px;
@@ -64,6 +65,8 @@
             top: 0;
             left: 0;
             z-index: 10;
+            transition: all 0.2s ease;
+            transform: scale(1);
         }
     }
   }
@@ -73,4 +76,44 @@
     body {
       background-color: olive;
     }
+
+    .root-container {
+        width: 100%;
+        height: 100%;
+        background-color: $background-color;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        overflow: hidden;
+    
+        .root-toolbar {
+            max-width: 75%;
+            min-width: 75%;
+            width: 75%;
+            height: 100%;
+            margin: 0;
+        }
+        .root-content {
+            min-width: 100%;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: $border-radius;
+            // background-color: $foreground-color;
+            color: $text-color;
+        }
+    }
+  }
+
+  #click-away {
+      width: 25%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.1);
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 100;
+      box-shadow: 1px 1px 10px black;
+      transform: translateX(120%);
+      transition: all 0.2s ease;
   }

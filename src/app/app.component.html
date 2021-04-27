@@ -1,10 +1,12 @@
 <div class="root-container">
-  <div class="root-toolbar" *ngIf="isLoggedIn">
+  <div class="root-toolbar" *ngIf="isLoggedIn" id="main-menu">
     <app-toolbar>
       
     </app-toolbar>
   </div>
-  <div class="root-content">
+  <div class="root-content" id="main-content">
     <router-outlet></router-outlet>
   </div>
+
+  <div id="click-away" (click)="closeMenu()"></div>
 </div>

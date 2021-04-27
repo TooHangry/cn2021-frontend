@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { showMainContentMobile } from 'src/app/utils/mobile.utils';
 
 @Component({
   selector: 'app-toolbar',
@@ -21,6 +22,7 @@ export class ToolbarComponent implements OnInit {
 
   routeTo(route: string): void {
     this.router.navigate([route]);
+    showMainContentMobile();
   }
 
   isSelected(route: string): boolean {

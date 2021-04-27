@@ -1,6 +1,15 @@
 <div class="open-chat">
   <div class="header">
-    {{ title }}
+    <div class="title">
+      <div class="back" (click)="exit.emit()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <polyline points="10 5 3 12 10 19" stroke-miterlimit="10" />
+          <line x1="3" y1="12" x2="22" y2="12" stroke-miterlimit="10" />
+        </svg>
+      </div>
+      {{ title }}
+    </div>
+
     <div class="line"></div>
   </div>
   <div class="messages scroll" *ngIf="!group">
@@ -10,7 +19,9 @@
       [ngClass]="{ right: sentByUser(message), left: !sentByUser(message) }"
     >
       <div class="content">
-        {{ message.message }}
+        <div class="message">
+          {{ message.message }}
+        </div>
       </div>
     </div>
   </div>
@@ -22,14 +33,24 @@
       [ngClass]="{ right: sentFromUser(message), left: !sentFromUser(message) }"
     >
       <div class="content">
-        {{ message.message }}
+        <div class="name" *ngIf="!sentFromUser(message)">
+          {{ message.username }}
+        </div>
+        <div class="message">
+          {{ message.message }}
+        </div>
       </div>
     </div>
   </div>
 
   <div class="input">
     <div class="input-area">
-      <input type="text" id="input" (keyup)="keyUp($event)" autocomplete="off"/>
+      <input
+        type="text"
+        id="input"
+        (keyup)="keyUp($event)"
+        autocomplete="off"
+      />
       <div class="image" (click)="imageInput.click()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path

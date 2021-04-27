@@ -1,11 +1,35 @@
 <div class="message-list">
   <div class="header">
-    {{ title }}
+    <div class="title">
+      <div class="back" (click)="exit.emit()">
+        <svg
+          _ngcontent-hqp-c11=""
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 0 24 24"
+          width="24px"
+          fill="#000000"
+        >
+          <path _ngcontent-hqp-c11="" d="M0 0h24v24H0V0z" fill="none"></path>
+          <path
+            _ngcontent-hqp-c11=""
+            d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"
+          ></path>
+        </svg>
+      </div>
+      {{ title }}
+    </div>
+
     <div class="line"></div>
   </div>
+
   <div *ngIf="friends && friends.length > 0" class="chats scroll">
-    <div *ngFor="let chat of friends" class="chat" (click)="selectChat(chat.friend)">
-      <div class="image">{{getInitials(chat.friend)}}</div>
+    <div
+      *ngFor="let chat of friends"
+      class="chat"
+      (click)="selectChat(chat.friend)"
+    >
+      <div class="image">{{ getInitials(chat.friend) }}</div>
       <div class="chat-info">
         <div class="info-header">
           {{ chat.friend.name }}

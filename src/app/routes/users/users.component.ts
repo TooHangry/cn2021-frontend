@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Friend, FriendResponse } from 'src/app/interfaces';
 import { FriendService } from 'src/app/services/friends/friend.service';
 import { SocketService } from 'src/app/services/sockets/socket.service';
+import { showMainMenuMobile } from 'src/app/utils/mobile.utils';
 import { getInitialsFromName } from 'src/app/utils/user.utils';
 
 @Component({
@@ -61,5 +62,9 @@ export class UsersComponent implements OnInit {
         this.showFriends = this.friends.value.length > 0;
       });
     }
+  }
+
+  exit(): void {
+    showMainMenuMobile();
   }
 }

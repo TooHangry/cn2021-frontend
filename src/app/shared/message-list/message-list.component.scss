@@ -10,6 +10,28 @@
     margin: 8px;
     margin-bottom: 16px;
 
+    .title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      .back {
+        height: 64px;
+        width: 64px;
+        svg {
+          stroke: none;
+          fill: $text-color;
+          height: 32px;
+          width: 32px;
+        }
+      }
+    }
+
     .line {
       width: calc(100% + 16px);
       height: 1px;
@@ -136,5 +158,32 @@
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .back {
+    display: block;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header {
+    margin: 8px 8px 0 8px;
+
+    .line {
+      margin: -1px 0 8px -8px;
+    }
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .back {
+    display: none;
+    width: 0;
+    height: 0;
   }
 }

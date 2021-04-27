@@ -67,7 +67,7 @@ export class UserService {
   }
 
   forceGetUser(): Observable<UserResponse> {
-    return this.client.get(`${this.baseURL}/users/me`).pipe(map((res: any) => res))
+    return this.client.get(`${this.baseURL}/users/me`).pipe(map((res: any) => res));
   }
 
   updateUser(first: string, last: string, nickname: string, email: string): Observable<any> {
