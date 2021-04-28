@@ -28,5 +28,6 @@ export interface MessageResponse {
 
 export interface MessageStructure {
     chatID: number;
-    messages: Message[]
+    messages: Message[];
+    hasNotification: boolean;
 }

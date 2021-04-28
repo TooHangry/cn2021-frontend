@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Friend, FriendList } from 'src/app/interfaces';
+import { Friend, FriendList, User } from 'src/app/interfaces';
+import { Message } from 'src/app/interfaces/chat.interfaces';
 import { getInitialsFromName } from 'src/app/utils/user.utils';
 
 @Component({
@@ -10,6 +11,7 @@ import { getInitialsFromName } from 'src/app/utils/user.utils';
 })
 export class MessageListComponent implements OnInit {
 
+  @Input() currentUser: User | null = null;
   @Input() friends: FriendList[] | null = [];
   @Input() title = '';
   @Output() chatSelected: EventEmitter<Friend> = new EventEmitter();
@@ -29,5 +31,12 @@ export class MessageListComponent implements OnInit {
 
   getInitials(user: Friend) {
     return getInitialsFromName(user.name)
+  }
+
+  showNotification(chat: FriendList): boolean {
+    if(this.currentUser) {
+      return chat.hasNotification && (chat.lastMessage.userID !== this.currentUser.id);
+    }
+    return false;
   }
 }

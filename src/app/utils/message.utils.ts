@@ -20,6 +20,7 @@ export const sortMessagesByReceiver = (messages: Message[], currentUserID: numbe
         {
           chatID: id,
           messages: [],
+          hasNotification: false
         },
       ];
     });
@@ -58,6 +59,7 @@ export const sortMessagesByRoom = (messages: Message[], currentUserID: number) =
         {
           chatID: id,
           messages: [],
+          hasNotification: false
         },
       ];
     });

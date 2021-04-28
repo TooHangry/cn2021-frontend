@@ -45,9 +45,11 @@ export class ChatService {
   addChat(message: Message): void {
     let old = this.messages.value;
     let userFlag = false;
+
     old.forEach((group: MessageStructure) => {
       if(group.chatID === message.userID || group.chatID === message.receiverID) {
         group.messages = [...group.messages, message];
+        group.hasNotification = true;
         userFlag = true;
       }
     });
@@ -56,7 +58,7 @@ export class ChatService {
     if(!userFlag) {
       const userID = this.authService.getID();
       const chatID = message.userID === userID ? message.receiverID : message.userID;
-      old = [...old, {chatID: chatID, messages: [message]}]
+      old = [...old, {chatID: chatID, messages: [message], hasNotification: false}]
     }
     this.messages.next(old);
   }
@@ -64,17 +66,34 @@ export class ChatService {
   addGroupChat(message: Message): void {
     let old = this.groupMessages.value;
     let userFlag = false;
-    old.forEach((group: MessageStructure) => {
-      if(group.chatID === message.roomID) {
-        group.messages = [...group.messages, message];
-        userFlag = true;
-      }
-    });
+
+    const otherGroups = old.filter(group => group.chatID !== message.roomID);
+    const group = old.find(group => group.chatID === message.roomID);
+    const newGroups = otherGroups ? otherGroups : [];
+    old = newGroups;
+    if(group) {
+      group.messages = [...group?.messages, message];
+      group.hasNotification = true,
+      userFlag = true;
+
+      old = [group, ...newGroups];
+    }
+
+    
+
+    
+
+    // old.forEach((group: MessageStructure) => {
+    //   if(group.chatID === message.roomID) {
+    //     group.messages = [...group.messages, message];
+    //     userFlag = true;
+    //     group.hasNotification = true;
+    //   }
+    // });
 
     // Adds a struct for user if not already assigned
     if(!userFlag) {
-      const userID = this.authService.getID();
-      old = [...old, {chatID: message.roomID, messages: [message]}]
+      old = [...old, {chatID: message.roomID, messages: [message], hasNotification: false}]
     }
     this.groupMessages.next(old);
   }

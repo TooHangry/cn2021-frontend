@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './auth/services/auth.service';
-import { User, UserResponse } from './interfaces';
+import { User } from './interfaces';
 import { ChatService } from './services/messages/chat.service';
 import { SocketService } from './services/sockets/socket.service';
 import { UserService } from './services/user/user.service';
 import { sortMessagesByReceiver } from './utils/message.utils';
-import { showMainContentMobile, showMainMenuMobile } from './utils/mobile.utils';
+import { showMainContentMobile } from './utils/mobile.utils';
 
 @Component({
   selector: 'app-root',
