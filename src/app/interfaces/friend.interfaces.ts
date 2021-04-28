@@ -5,13 +5,14 @@ export interface Friend {
     username: string;
     name: string;
     profilePicture: string;
-    room: Room
+    room: Room;
 }
 
 
 export interface FriendList {
     friend: Friend;
-    lastMessage: string;
+    lastMessage: Message;
+    hasNotification: boolean;
 }
 
 export interface FriendResponse {

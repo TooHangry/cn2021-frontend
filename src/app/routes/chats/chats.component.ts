@@ -36,9 +36,22 @@ export class ChatsComponent implements OnInit {
           let friends: FriendList[] = [];
           user.user.friends.forEach((friend: Friend) => {
             const chatMessages = messages.find((group: MessageStructure) => group.chatID === friend.id)?.messages;
+            const notify = messages.find((group: MessageStructure) => group.chatID === friend.id)?.hasNotification;
             friends = [...friends, {
               friend,
-              lastMessage: chatMessages ? chatMessages[chatMessages.length - 1].message : 'Select to start chatting!'
+              lastMessage: chatMessages ? chatMessages[chatMessages.length - 1]: {
+                id: 0,
+                isGroup: false,
+                roomID: 0,
+                isImage: false,
+                imageLocation: '',
+                userID: user.user.id,
+                receiverID: friend.id,
+                dateCreated: new Date(),
+                message: 'Select to start chatting!',
+                username: ''
+              },
+              hasNotification: notify ? notify : false
             }]
           })
           this.friends.next(friends);
@@ -53,10 +66,14 @@ export class ChatsComponent implements OnInit {
     // Need to query messages here, scroll to bottom
     console.log(event);
 
-    const list = (document.getElementById('list') as HTMLDivElement);
-    if (list.offsetWidth < 601) {
-      list.style.transform = 'scale(1)';
-    }
+    const currentFriends = this.friends.value; 
+    // clear notification on select.
+    currentFriends.forEach((friend:FriendList)=>{
+      if(friend.friend.id === event.id){
+        friend.hasNotification = false;
+      }
+    })
+    this.friends.next(currentFriends);
   }
 
   sendMessage(message: string): void {

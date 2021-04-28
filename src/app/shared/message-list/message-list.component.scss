@@ -1,5 +1,12 @@
 @import "../../../variables.scss";
 
+.notify {
+  background-color: #4a499c;
+}
+.no-tify {
+  background-color: $interactive-element-color;
+}
+
 .message-list {
   width: 100%;
   height: 100%;
@@ -112,12 +119,12 @@
         }
       }
     }
+
     .chat {
       width: calc(100% - 16px);
       min-height: 96px;
       max-height: 96px;
       margin-bottom: 8px;
-      background-color: $interactive-element-color;
       border-radius: $border-radius;
       display: flex;
       align-items: center;

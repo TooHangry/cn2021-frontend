@@ -28,6 +28,7 @@
       *ngFor="let chat of friends"
       class="chat"
       (click)="selectChat(chat.friend)"
+      [ngClass]="{'notify': showNotification(chat), 'no-tify': !showNotification(chat)}"
     >
       <div class="image">{{ getInitials(chat.friend) }}</div>
       <div class="chat-info">
@@ -35,7 +36,7 @@
           {{ chat.friend.name }}
         </div>
         <div class="info-last-message">
-          {{ chat.lastMessage }}
+          {{ chat.lastMessage.message }}
         </div>
       </div>
     </div>
