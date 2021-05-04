@@ -1,5 +1,5 @@
 <div class="login-page">
-  <div class="login-modal" *ngIf="!canLogOut">
+  <div class="login-modal panel" *ngIf="!canLogOut">
     <div class="header">
       {{ getHeader() }}
       <div class="line"></div>
@@ -118,7 +118,7 @@
     </div>
   </div>
 
-  <div class="login-modal" *ngIf="canLogOut">
+  <div class="login-modal panel" *ngIf="canLogOut">
     <div class="header">
       Log Out
       <div class="line"></div>

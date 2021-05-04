@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/interfaces';
+import { ThemeService } from 'src/app/services/theme/theme.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { showMainContentMobile } from 'src/app/utils/mobile.utils';
 import { getInitialsFromName } from 'src/app/utils/user.utils';
@@ -12,7 +13,7 @@ import { getInitialsFromName } from 'src/app/utils/user.utils';
   styleUrls: ['./profile-widget.component.scss'],
 })
 export class ProfileWidgetComponent implements OnInit {
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private router: Router, private userService: UserService, private themeService: ThemeService) {}
   user: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   ngOnInit(): void {
@@ -44,5 +45,9 @@ export class ProfileWidgetComponent implements OnInit {
   getInitials(): string {
     const name = this.user.value ? this.user.value.name : '';
     return getInitialsFromName(name);
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
   }
 }

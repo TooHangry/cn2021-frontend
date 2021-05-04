@@ -10,7 +10,6 @@
     height: 100%;
     width: calc(100% - 16px - 35%);
     margin: 8px;
-    background-color: $foreground-color;
     border-radius: $border-radius;
   }
 
@@ -18,17 +17,16 @@
     height: 100%;
     width: 35%;
     margin: 8px;
-    background-color: $foreground-color;
     border-radius: $border-radius;
   }
 
   .null-state {
     width: 100%;
     height: 100%;
-    margin: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
   }
 }
 

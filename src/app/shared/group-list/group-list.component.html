@@ -35,7 +35,7 @@
   </div>
 
   <div *ngIf="groups && groups.length > 0" class="chats scroll">
-    <div *ngFor="let chat of groups" class="chat" (click)="selectChat(chat)">
+    <div *ngFor="let chat of groups" class="chat interactive" (click)="selectChat(chat)">
       <div class="image">{{ getInitials(chat) }}</div>
       <div class="chat-info">
         <div class="info-header">

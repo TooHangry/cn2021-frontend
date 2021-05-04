@@ -108,7 +108,6 @@
     align-content: center;
 
     svg {
-      stroke: #e4e4e4;
       height: 24px;
     }
 
@@ -163,8 +162,7 @@
         outline: none;
         padding: 0px 2px;
         margin: 0 0 0 2px;
-        border: 4px solid #e4e4e4;
-        background-color: #e4e4e4;
+        
         border-radius: $border-radius;
         transition: all 0.2s linear;
         &:hover {

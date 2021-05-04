@@ -22,7 +22,6 @@
         margin-right: 8px;
         svg {
           stroke: none;
-          fill: $text-color;
           height: 32px;
           width: 32px;
         }
@@ -37,7 +36,6 @@
         cursor: pointer;
         svg {
           stroke: $text-color;
-          fill: $text-color;
           height: 36px;
           width: 36px;
         }
@@ -133,7 +131,6 @@
       min-height: 96px;
       max-height: 96px;
       margin-bottom: 8px;
-      background-color: $interactive-element-color;
       border-radius: $border-radius;
       display: flex;
       align-items: center;

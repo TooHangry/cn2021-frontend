@@ -28,7 +28,7 @@
       *ngFor="let chat of friends"
       class="chat"
       (click)="selectChat(chat.friend)"
-      [ngClass]="{'notify': showNotification(chat), 'no-tify': !showNotification(chat)}"
+      [ngClass]="{'notify': showNotification(chat), 'interactive': !showNotification(chat)}"
     >
       <div class="image">{{ getInitials(chat.friend) }}</div>
       <div class="chat-info">

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './interfaces';
 import { ChatService } from './services/messages/chat.service';
 import { SocketService } from './services/sockets/socket.service';
+import { ThemeService } from './services/theme/theme.service';
 import { UserService } from './services/user/user.service';
 import { sortMessagesByReceiver } from './utils/message.utils';
 import { showMainContentMobile } from './utils/mobile.utils';
@@ -17,9 +18,11 @@ export class AppComponent implements OnInit {
   constructor(
     private userService: UserService,
     private socketService: SocketService,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private themeService: ThemeService
   ) {}
   isLoggedIn = false;
+  isLight = false;
 
   ngOnInit(): void {
     this.socketService.connect();
@@ -28,6 +31,29 @@ export class AppComponent implements OnInit {
         this.isLoggedIn = true;
       }
     });
+
+    const site = document.getElementById('site') as HTMLDivElement;
+
+    if (this.themeService.getTheme()) {
+        site.classList.add('light');
+        site.classList.remove('dark');
+    } else {
+      site.classList.add('dark');
+      site.classList.remove('light');
+    }
+
+    this.themeService.isLightTheme.subscribe((isLightmode: boolean) => {
+      console.log(isLightmode)
+      if(isLightmode) {
+        site.classList.add('light');
+        site.classList.remove('dark');
+      } else {
+        site.classList.add('dark');
+        site.classList.remove('light');
+      }
+    })
+
+    
 
     // This is where we will listen to all of the socket events
     //  When we receive an event, we will call through to a state service that will manage our data

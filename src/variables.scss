@@ -2,15 +2,22 @@
 $border-radius: 4px;
 
 // Colors:
-$background-color: #2b2b2b;
-$foreground-color: #3b3b3b;
-$interactive-element-color: #4b4b4b;
-$text-color: #dedee9;
+$background-color: #141518;
+$foreground-color: #28282d;
+$interactive-element-color:#383a43;
+$interactive-element-color-highlight: #5f5f69;
+$text-color: #faf9fa;
 $text-color-light: #1e1e1e;
-$accent-color: #3681fd;
+$accent-color: #286bf4;
+
+$dark-shadow-heavy: 4px 4px 9px #0b0c0e;
+$dark-shadow-light: 0px 0px 6px #141518;
 
 
-// $background-color: #e1e6eb;
-// $foreground-color: rgb(241, 241, 250);
-// $interactive-element-color: #ffffff;
-// $text-color: #3b3b3b;
+$background-color-light: #f0f3f4;
+$foreground-color-light: #f8f9fa;
+$interactive-element-color-light: #fdfdfd;
+$interactive-element-color-highlight-light: #ebebeb;
+$light-shadow-heavy: 4px 4px 9px #dbdbdb;
+$light-shadow-light: 0px 0px 6px #e2e2e2;
+$text-color-light: #191919;

@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: $text-color;
 
   .logo {
     width: 192px;
@@ -19,7 +18,6 @@
     font-weight: bold;
     svg {
       font-weight: bolder;
-      fill: $text-color;
     }
   }
 
@@ -35,7 +33,6 @@
     justify-content: flex-start;
     align-items: center;
     border-radius: $border-radius;
-    background-color: $foreground-color;
     margin-top: 16px;
 
     .selected {

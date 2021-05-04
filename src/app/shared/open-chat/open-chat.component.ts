@@ -13,7 +13,7 @@ import { Message, MessageStructure, Room } from 'src/app/interfaces/chat.interfa
 @Component({
   selector: 'app-open-chat',
   templateUrl: './open-chat.component.html',
-  styleUrls: ['./open-chat.component.scss'],
+  styleUrls: ['./open-chat.component.scss']
 })
 export class OpenChatComponent implements OnInit, OnChanges {
   @Input() title = '';

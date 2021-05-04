@@ -1,16 +1,16 @@
 <div class="app-chat">
-    <div class="messages" id="group-list">
+    <div class="messages panel" id="group-list">
         <app-open-chat *ngIf="selectedChatName && !showCreation()" [title]="selectedChatName" [messages]="messages | async" (sentMessage)="sendMessage($event)" [group]="true" [selectedRoom]="selectedGroup" [user]="user | async" (exit)="exit()"></app-open-chat>
         <app-group-list *ngIf="!selectedChatName && !showCreation()" [groups]="groups | async" title="Groups" (chatSelected)="chatSelected($event)" [showCreate]="true" (create)="openCreateModal()" (exit)="showMobileMenu()">
         </app-group-list>
 
 
-        <div class="creat-group" *ngIf="showCreation()">
+        <div class="creat-group panel" *ngIf="showCreation()">
             <app-create-group [user]="user | async" (createGroup)="createGroup($event)"></app-create-group>
         </div>
     </div>
 
-    <div class="messages-list">
+    <div class="messages-list panel">
         <app-group-list *ngIf="selectedChatName" [groups]="groups | async" title="Groups" [showCreate]="true" (create)="openCreateModal()" (chatSelected)="chatSelected($event)" (exit)="showMobileMenu()">
         </app-group-list>
         
@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<div class="create-modal" id="create">
+<div class="create-modal panel" id="create">
     <div class="modal">
         <div class="create-group">
             <app-create-group [user]="user | async" [showExit]="true" (exit)="closeCreateModal()" (createGroup)="createGroup($event)"></app-create-group>

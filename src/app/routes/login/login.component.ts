@@ -100,8 +100,9 @@ export class LoginComponent implements OnInit {
       this.userService.login(email, password).subscribe(
         (res: any) => { 
           this.userService.setUser(res);
-          this.router.navigate(['/chats']);
-          // window.location.reload();
+          this.router.navigate(['/chats']).then(() => {
+            window.location.reload();
+          });
         },
         (err: any) => { this.message = "That user doesn't exist!" })
     } else {

@@ -3,7 +3,6 @@
 .create-group-container {
   width: 100%;
   height: 100%;
-  background-color: $foreground-color;
   border-radius: $border-radius;
   display: flex;
   flex-direction: column;
@@ -29,7 +28,6 @@
         cursor: pointer;
         svg {
           stroke: $text-color;
-          fill: $text-color;
           height: 36px;
           width: 36px;
         }

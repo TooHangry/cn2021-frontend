@@ -32,3 +32,66 @@ body {
   border-radius: 10px;
   height: 3px;
 }
+
+
+.dark {
+  background-color: $background-color;
+  color: $text-color;
+  .panel {
+    background-color: $foreground-color;
+    box-shadow: $dark-shadow-heavy;
+  }
+  .interactive {
+    background-color: $interactive-element-color;
+    box-shadow: $dark-shadow-light;
+    &:hover {
+      background-color: $interactive-element-color-highlight;
+    }
+  }
+
+  svg {
+    fill: $text-color;
+  }
+
+  .chat-input {
+    svg {
+      stroke: $text-color;
+    }
+    input {
+      border: 4px solid $text-color;
+      background-color: $text-color;
+    }
+  }
+}
+
+
+
+.light {
+  background-color: $background-color-light;
+  color: $text-color-light;
+  .panel {
+      background-color: $foreground-color-light;
+      box-shadow: $light-shadow-heavy;
+  }
+  .interactive {
+    background-color: $interactive-element-color-light;
+    box-shadow: $light-shadow-light;
+    &:hover {
+      background-color: $interactive-element-color-highlight-light;
+    }
+  }
+
+  svg {
+    fill: $text-color-light;
+  }
+
+  .chat-input {
+    svg {
+      stroke: $text-color-light;
+    }
+    input {
+      border: 4px solid #eeeeee;
+      background-color: #eeeeee;
+    }
+  }
+}

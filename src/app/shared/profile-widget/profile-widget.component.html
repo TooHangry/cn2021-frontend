@@ -1,4 +1,4 @@
-<div class="profile-widget-container">
+<div class="profile-widget-container panel">
   <div class="user-container">
     <div class="user-header">
       <div class="user-image">{{getInitials()}}</div>
@@ -45,7 +45,7 @@
         </svg>
       </div>
 
-      <div class="button">
+      <div class="button" (click)="toggleTheme()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <line x1="10" y1="23" x2="14" y2="23" fill="none" />
           <path d="M9.5,16.4a5.5,5.5,0,1,1,5,0V20h-5Z" fill="none" />
